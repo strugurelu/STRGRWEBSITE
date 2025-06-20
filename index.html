@@ -351,16 +351,10 @@ body.light-mode button[type="submit"]:hover {
     
 /* Aquí pegas la media query para móviles */
 @media (max-width: 600px) {
-  body {
-    font-size: 16px;
-    padding: 10px;
-  }
-  nav {
-    display: flex;
-    flex-direction: column;
-  }
-  .contenedor {
-    width: 100%;
+  #hero-text h1 {
+    font-size: 1.8rem;  /* Ajusta el tamaño aquí (antes era 3rem) */
+    line-height: 1.2;   /* Para mejorar la legibilidad */
+    word-wrap: break-word; /* Para que las palabras largas se dividan si es necesario */
   }
 }
     
