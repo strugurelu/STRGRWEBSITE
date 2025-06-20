@@ -478,24 +478,25 @@ body.light-mode button[type="submit"]:hover {
     });
   });
 </script>
-  <script>
+<script>
   const toggleBtn = document.getElementById('toggle-mode');
   const body = document.body;
 
-  // Aplicar el modo almacenado al cargar
-  if (localStorage.getItem('theme') === 'light') {
+  // Aplica el modo guardado en localStorage
+  const storedTheme = localStorage.getItem('theme');
+  if (storedTheme === 'light') {
     body.classList.add('light-mode');
     toggleBtn.textContent = '🌙 Oscuro';
+  } else {
+    toggleBtn.textContent = '☀️ Claro';
   }
 
   toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-    const isLight = body.classList.contains('light-mode');
+    const isLight = body.classList.toggle('light-mode');
     toggleBtn.textContent = isLight ? '🌙 Oscuro' : '☀️ Claro';
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
-</script>
-  
+</script>  
 </body>
 </html>
 
