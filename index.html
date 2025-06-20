@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" /> 
   <meta name="google-site-verification" content="6hvMfSI6_AAnnY8Mg86eZAroCnkv8UaNnhc2qwa_TnY" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -342,6 +343,25 @@ body.light-mode .cta-btn:hover,
 body.light-mode button[type="submit"]:hover {
   background: #333;
   color: #fff;
+}
+    body {
+  font-size: 18px;
+  padding: 20px;
+}
+    
+/* Aquí pegas la media query para móviles */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .contenedor {
+    width: 100%;
+  }
 }
     
   </style>
