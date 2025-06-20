@@ -300,6 +300,49 @@
         font-size: 0.95rem;
       }
     }
+    body.light-mode {
+  background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%);
+  color: #111;
+}
+body.light-mode a {
+  color: #111;
+  text-shadow: none;
+}
+body.light-mode a:hover {
+  color: #000;
+  text-shadow: 0 0 5px #aaa;
+}
+body.light-mode header {
+  background: rgba(255,255,255,0.8);
+  border-bottom: 1px solid #ccc;
+  color: #000;
+  text-shadow: none;
+}
+body.light-mode section,
+body.light-mode input,
+body.light-mode textarea {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+  border-color: #333;
+}
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+  color: #000;
+  text-shadow: none;
+}
+body.light-mode .btn,
+body.light-mode .cta-btn,
+body.light-mode button[type="submit"] {
+  background: #000;
+  color: #fff;
+}
+body.light-mode .btn:hover,
+body.light-mode .cta-btn:hover,
+body.light-mode button[type="submit"]:hover {
+  background: #333;
+  color: #fff;
+}
   </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2650658270877925"
      crossorigin="anonymous"></script>
@@ -314,7 +357,7 @@
     </nav>
     
     <button id="toggle-mode" style="margin-left: 1rem; background: none; border: 2px solid white; color: white; padding: 0.4rem 1rem; border-radius: 20px; cursor: pointer;">
-  🌙 Claro
+  🌙 
     </button>
   
   </header>
