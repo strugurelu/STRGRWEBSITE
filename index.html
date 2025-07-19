@@ -1,514 +1,427 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8" /> 
-  <meta name="google-site-verification" content="6hvMfSI6_AAnnY8Mg86eZAroCnkv8UaNnhc2qwa_TnY" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STRGR | Agencia de Automatizaciones con IA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
+  <meta name="description" content="STRGR: Agencia especializada en automatizaciones con Inteligencia Artificial. Chatbots, analítica avanzada, optimización de procesos y soluciones IA a medida." />
+  <meta name="robots" content="index,follow" />
+  <meta name="google-site-verification" content="6hvMfSI6_AAnnY8Mg86eZAroCnkv8UaNnhc2qwa_TnY" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="STRGR | Agencia de Automatizaciones con IA" />
+  <meta property="og:description" content="Impulsa tu negocio con soluciones de inteligencia artificial personalizadas: chatbots, analítica y automatización de procesos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tudominio.com/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
   <style>
-    html {
-  scroll-behavior: smooth;
-}
-    
-    /* Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
+    :root {
+      --color-bg-dark: #0d0d0f;
+      --color-bg-dark-grad: linear-gradient(135deg,#111 0%,#000 100%);
+      --color-bg-glass: rgba(255,255,255,0.05);
+      --color-bg-glass-alt: rgba(255,255,255,0.08);
+      --color-border-glass: rgba(255,255,255,0.15);
+      --color-text-light: #eee;
+      --color-accent: #ffffff;
+      --radius: 16px;
+      --transition: .35s cubic-bezier(.4,.0,.2,1);
+      --header-height: 70px;
+      --container-max: 1180px;
+      --focus-ring: 0 0 0 3px rgba(255,255,255,.55),0 0 0 6px rgba(255,255,255,.15);
     }
+    /* Tema claro variables */
+    body.light-mode {
+      --color-bg-dark: #f4f5f7;
+      --color-bg-dark-grad: linear-gradient(135deg,#f0f0f0 0%,#ffffff 100%);
+      --color-bg-glass: rgba(0,0,0,0.04);
+      --color-bg-glass-alt: rgba(0,0,0,0.07);
+      --color-border-glass: rgba(0,0,0,0.15);
+      --color-text-light: #111;
+      --color-accent: #111;
+      --focus-ring: 0 0 0 3px rgba(0,0,0,.55),0 0 0 6px rgba(0,0,0,.15);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #111 0%, #000 100%);
-      color: #eee;
+      font-family: 'Roboto', system-ui, sans-serif;
+      background: var(--color-bg-dark-grad);
+      color: var(--color-text-light);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
+      line-height: 1.45;
     }
-    a {
-      color: #ddd;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      text-shadow: 0 0 5px rgba(255,255,255,0.7);
+    body:has(dialog[open]) { overflow: hidden; }
+
+    a { color: var(--color-text-light); text-decoration: none; position: relative; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 6px; }
+    a:hover { color: #fff; }
+
+    /* Accesibilidad: enlace para saltar contenido */
+    .skip-link {
+      position: absolute; left: 0; top: -40px; background: #000; color: #fff; padding: .7rem 1rem; z-index: 2000; text-decoration: none; font-weight: 600; border-radius: 0 0 8px 0; transition: top .3s;
     }
-    a:hover, nav a:hover {
-      color: #fff;
-      text-shadow: 0 0 12px #fff;
-    }
+    .skip-link:focus { top: 0; }
+
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(20,20,20,0.7);
-      backdrop-filter: saturate(180%) blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 70px;
+      position: fixed; inset: 0 0 auto 0; height: var(--header-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem,3vw,2.5rem);
+      background: rgba(20,20,20,0.6);
+      backdrop-filter: saturate(180%) blur(18px);
+      border-bottom: 1px solid var(--color-border-glass);
       z-index: 1000;
       font-family: 'Playfair Display', serif;
-      box-shadow: 0 0 15px rgba(255,255,255,0.15);
-      color: #fff;
-      text-shadow: 0 0 5px #fff;
     }
-    header .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: #fff;
-      text-shadow: 0 0 10px #fff;
+    body.light-mode header { background: rgba(255,255,255,0.85); }
+
+    .logo a { font-size: 1.9rem; font-weight: 700; letter-spacing: .07em; color: #fff; }
+    body.light-mode .logo a { color: #111; }
+
+    nav { display: flex; gap: clamp(1rem,2vw,2rem); font-weight: 600; font-size: .95rem; }
+    nav a { padding: .45rem .25rem; line-height: 1; letter-spacing: .05em; }
+    nav a.active { position: relative; }
+    nav a.active::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 100%; background: currentColor; border-radius: 2px; }
+
+    .theme-toggle {
+      background: none; border: 2px solid currentColor; color: currentColor; cursor: pointer;
+      border-radius: 30px; padding: .45rem 1rem; font-weight: 600; font-size: .85rem;
+      display: inline-flex; align-items: center; gap: .4rem; transition: var(--transition);
     }
-    nav {
-      font-weight: 600;
+    .theme-toggle:hover { background: var(--color-bg-glass-alt); }
+
+    main { flex: 1; width: 100%; max-width: var(--container-max); margin: 0 auto; padding: calc(var(--header-height) + 50px) clamp(1rem,2.2vw,2.5rem) 4rem; }
+
+    section { position: relative; background: var(--color-bg-glass); border: 1px solid var(--color-border-glass); border-radius: var(--radius); padding: clamp(2rem,3vw,3.2rem) clamp(1.25rem,2vw,2.5rem); margin-bottom: clamp(2.5rem,5vw,3.8rem); box-shadow: 0 4px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04) inset; scroll-margin-top: calc(var(--header-height) + 24px); }
+    body.light-mode section { box-shadow: 0 4px 30px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04) inset; }
+
+    h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.15; font-weight:700; letter-spacing:.02em; }
+    h1 { font-size: clamp(2.2rem,5.5vw,3.8rem); margin: 0 0 1.1rem; }
+    h2 { font-size: clamp(2rem,4.5vw,2.9rem); margin: 0 0 1.4rem; padding-left: .9rem; border-left: 5px solid currentColor; }
+    h3 { font-size: clamp(1.3rem,2.6vw,1.7rem); margin: 0 0 .4rem; }
+
+    p { margin: 0 0 1.05rem; font-size: clamp(.98rem,1.2vw,1.05rem); max-width: 62ch; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .list-check li { position: relative; padding-left: 1.6rem; margin: 0 0 .75rem; font-size: 1.05rem; }
+    .list-check li::before { content:'✔'; position:absolute; left:0; top:0; font-weight:700; }
+
+    /* Hero */
+    #hero { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: clamp(2rem,4vw,3rem); align-items: center; }
+    .hero-text p { font-size: clamp(1.05rem,1.6vw,1.25rem); font-weight: 500; }
+
+    .media-frame { position: relative; }
+    .media-frame::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: radial-gradient(circle at 30% 20%,rgba(255,255,255,.28),transparent 70%); mix-blend-mode: overlay; pointer-events: none; }
+    .hero-img { width: 100%; max-width: 460px; border-radius: 20px; display: block; aspect-ratio: 4/3; object-fit: cover; box-shadow: 0 0 45px -8px rgba(255,255,255,.35); }
+
+    .btn, .cta-btn { --btn-bg: #fff; --btn-color: #000; background: var(--btn-bg); color: var(--btn-color); display:inline-flex; align-items:center; gap:.55rem; font-weight:700; padding: .9rem 2.1rem; font-size:1.05rem; border-radius: 40px; border: none; cursor:pointer; letter-spacing:.03em; box-shadow: 0 0 0 2px rgba(255,255,255,0.15),0 8px 30px -8px rgba(0,0,0,.6); position:relative; transition: var(--transition); }
+    .cta-btn::after { content:'→'; transition: transform var(--transition); }
+    .cta-btn:hover::after { transform: translateX(4px); }
+    .btn:hover, .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px rgba(0,0,0,.65),0 0 0 2px rgba(255,255,255,0.25); }
+    body.light-mode .btn, body.light-mode .cta-btn { --btn-bg:#000; --btn-color:#fff; }
+
+    /* Servicios cards (opcional para escalabilidad futura) */
+    .services-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 1.4rem; margin-top: 1.8rem; }
+    .service-item { background: var(--color-bg-glass-alt); border:1px solid var(--color-border-glass); padding:1.2rem 1rem 1.4rem; border-radius:14px; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:.6rem; font-size:.95rem; }
+    .service-item h3 { font-size:1.05rem; margin-bottom:.15rem; }
+    .service-icon { width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:rgba(255,255,255,0.15); font-size:1.05rem; font-weight:700; }
+    body.light-mode .service-icon { background:rgba(0,0,0,0.15); }
+
+    /* Quiénes somos artículos */
+    .about-grid { display:grid; gap: clamp(1rem,2vw,1.6rem); grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+    .about-card { padding:1.4rem 1.3rem 1.6rem; background: var(--color-bg-glass-alt); border:1px solid var(--color-border-glass); border-radius: 14px; }
+
+    /* Formulario */
+    form { display:grid; gap:1.15rem; max-width:560px; font-size: .97rem; }
+    label { font-weight:600; display:flex; gap:.4rem; align-items:center; }
+    input[type="text"], input[type="email"], textarea { width:100%; padding:.85rem 1rem; font-size:1rem; border-radius:12px; border:1.5px solid var(--color-border-glass); background: var(--color-bg-glass-alt); color: inherit; font-family: inherit; resize: vertical; min-height:52px; transition: var(--transition); }
+    textarea { min-height: 140px; }
+    input:focus, textarea:focus { border-color: currentColor; background: rgba(255,255,255,.12); }
+    .form-actions { display:flex; gap:1rem; align-items:center; }
+    .msg-exito { display:none; font-weight:700; font-size: .98rem; }
+    .msg-exito.visible { display:block; animation: fadeIn .65s; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(6px);} to { opacity:1; transform:translateY(0);} }
+
+    /* Barra social flotante */
+    .social-bar { position: fixed; right: 18px; bottom: 18px; display:flex; flex-direction:column; gap:14px; z-index:1200; }
+    .social-bar a { width:54px; height:54px; display:grid; place-items:center; border-radius:50%; box-shadow:0 4px 20px -4px rgba(0,0,0,.45); background:#222; transition: var(--transition); }
+    .social-bar a:hover { transform: translateY(-4px) scale(1.05); }
+    .social-bar a.whatsapp { background:#25D366; }
+    .social-bar a.instagram { background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .social-bar a.tiktok { background:#000; }
+    .social-icon { width:30px; height:30px; display:block; }
+
+    footer { text-align:center; padding: 2rem 1rem 2.4rem; background: rgba(20,20,20,.75); font-size:.82rem; letter-spacing:.05em; margin-top:auto; }
+    body.light-mode footer { background: rgba(0,0,0,0.08); }
+
+    /* Responsive ajustes */
+    @media (max-width: 760px) {
+      nav { display:none; }
+      .nav-toggle { display:inline-flex; }
+      header { justify-content: space-between; }
     }
-    nav a {
-      margin-left: 2rem;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
+    @media (max-width: 560px) {
+      .social-bar a { width:50px; height:50px; }
+      main { padding: calc(var(--header-height) + 40px) 1rem 3rem; }
+      h1 { font-size: clamp(2rem,9vw,3.2rem); }
+      .hero-img { max-width: 100%; }
     }
 
-    main {
-      flex-grow: 1;
-      padding: 110px 2rem 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    section {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: saturate(180%) blur(20px);
-      border-radius: 14px;
-      box-shadow: 0 0 40px rgba(255,255,255,0.1);
-      padding: 3rem 2rem;
-      margin-bottom: 3rem;
-      color: #eee;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      border-left: 5px solid #fff;
-      padding-left: 1rem;
-      color: #fff;
-      text-shadow: 0 0 8px #fff;
-    }
-    section ul {
-      list-style: none;
-      padding-left: 0;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-    section ul li {
-      padding-left: 1.5rem;
-      position: relative;
-      margin-bottom: 0.7rem;
-    }
-    section ul li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
-      color: #fff;
-      font-weight: bold;
-      text-shadow: 0 0 5px #fff;
-    }
-    article {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      padding-bottom: 1rem;
-    }
-    article h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #fff;
-      margin-bottom: 0.3rem;
-      text-shadow: 0 0 6px #fff;
-    }
-    article p {
-      margin-bottom: 0.5rem;
-      color: #ddd;
-    }
-    .btn {
-      display: inline-block;
-      background: #fff;
-      color: #000;
-      padding: 0.6rem 1.4rem;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      font-size: 1rem;
-      text-decoration: none;
-      box-shadow: 0 0 12px rgba(255,255,255,0.6);
-    }
-    .btn:hover {
-      background: #ddd;
-      box-shadow: 0 0 20px rgba(255,255,255,0.8);
-      color: #111;
-    }
-    #hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      margin-bottom: 4rem;
-      flex-wrap: wrap;
-      color: #fff;
-    }
-    #hero-text {
-      flex: 1 1 400px;
-    }
-    #hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      line-height: 1.1;
-      letter-spacing: 0.05em;
-      color: #fff;
-      text-shadow: 0 0 15px #fff;
-    }
-    #hero-text p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 480px;
-      font-weight: 500;
-      color: #ddd;
-      text-shadow: 0 0 8px rgba(255,255,255,0.7);
-    }
-    .cta-btn {
-      background: #fff;
-      color: #000;
-      padding: 0.9rem 2.2rem;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: background-color 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 0 16px rgba(255,255,255,0.9);
-    }
-    .cta-btn:hover {
-      background: #ddd;
-      box-shadow: 0 0 30px rgba(255,255,255,1);
-      color: #111;
-    }
-    #hero-image img {
-      max-width: 400px;
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(255,255,255,0.3);
-      object-fit: cover;
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.5));
-    }
+    /* Menú móvil */
+    .mobile-menu { position: fixed; top: var(--header-height); right: 0; width: min(300px,80%); bottom:0; background: rgba(15,15,15,.95); backdrop-filter: blur(14px); transform: translateX(100%); transition: var(--transition); padding: 1.5rem 1.2rem 3rem; display:flex; flex-direction:column; gap:.5rem; z-index:999; }
+    body.light-mode .mobile-menu { background: rgba(255,255,255,.9); }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a { padding:.9rem 1rem; border-radius: 10px; font-weight:600; }
+    .mobile-menu a:hover { background: var(--color-bg-glass-alt); }
 
-    /* Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      max-width: 450px;
-      font-size: 1rem;
-      color: #ddd;
-    }
-    label {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      text-shadow: 0 0 5px rgba(255,255,255,0.8);
-    }
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      padding: 0.7rem 1rem;
-      font-size: 1rem;
-      border-radius: 10px;
-      border: 1.5px solid #fff;
-      background: rgba(255,255,255,0.05);
-      color: #eee;
-      resize: vertical;
-      font-family: 'Roboto', sans-serif;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.3) inset;
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus {
-      border-color: #fff;
-      outline: none;
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0 0 14px #fff inset;
-      color: #000;
-    }
-    textarea {
-      min-height: 120px;
-    }
-    button[type="submit"] {
-      background: #fff;
-      border: none;
-      color: #000;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.8rem 1.8rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      max-width: 180px;
-      align-self: flex-start;
-      box-shadow: 0 0 16px rgba(255,255,255,0.9);
-    }
-    button[type="submit"]:hover {
-      background: #ddd;
-      box-shadow: 0 0 30px rgba(255,255,255,1);
-      color: #111;
-    }
+    .nav-toggle { display:none; background:none; border:2px solid currentColor; color:currentColor; padding:.55rem .9rem; border-radius:12px; font-size:.95rem; font-weight:700; cursor:pointer; align-items:center; gap:.55rem; }
 
-    #success-message {
-      color: #ddd;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      display: none;
-      text-shadow: 0 0 10px #fff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.8rem 1rem;
-      background: rgba(20,20,20,0.8);
-      font-size: 0.9rem;
-      color: #eee;
-      font-family: 'Roboto', sans-serif;
-      letter-spacing: 0.05em;
-      box-shadow: inset 0 2px 8px rgba(255,255,255,0.15);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      #hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      #hero-text, #hero-image {
-        flex: none;
-        max-width: 100%;
-      }
-      nav a {
-        margin-left: 1.2rem;
-        font-size: 0.95rem;
-      }
-    }
-    body.light-mode {
-  background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%);
-  color: #111;
-}
-body.light-mode a {
-  color: #111;
-  text-shadow: none;
-}
-body.light-mode a:hover {
-  color: #000;
-  text-shadow: 0 0 5px #aaa;
-}
-body.light-mode header {
-  background: rgba(255,255,255,0.8);
-  border-bottom: 1px solid #ccc;
-  color: #000;
-  text-shadow: none;
-}
-body.light-mode section,
-body.light-mode input,
-body.light-mode textarea {
-  background: rgba(0, 0, 0, 0.05);
-  color: #000;
-  border-color: #333;
-}
-body.light-mode h1,
-body.light-mode h2,
-body.light-mode h3 {
-  color: #000;
-  text-shadow: none;
-}
-body.light-mode .btn,
-body.light-mode .cta-btn,
-body.light-mode button[type="submit"] {
-  background: #000;
-  color: #fff;
-}
-body.light-mode .btn:hover,
-body.light-mode .cta-btn:hover,
-body.light-mode button[type="submit"]:hover {
-  background: #333;
-  color: #fff;
-}
-    body {
-  font-size: 18px;
-  padding: 20px;
-}
-    
-/* Aquí pegas la media query para móviles */
-@media (max-width: 600px) {
-  #hero-text h1 {
-    font-size: 1.8rem;  /* Ajusta el tamaño aquí (antes era 3rem) */
-    line-height: 1.2;   /* Para mejorar la legibilidad */
-    word-wrap: break-word; /* Para que las palabras largas se dividan si es necesario */
-  }
-}  
   </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2650658270877925"
-     crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "STRGR",
+    "url": "https://tudominio.com/",
+    "description": "Agencia de automatizaciones con IA: chatbots, analítica y soluciones a medida.",
+    "logo": "https://tudominio.com/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/davidstr_r/",
+      "https://wa.me/34642607380",
+      "https://www.tiktok.com/@usernamex._o"
+    ]
+  }
+  </script>
 </head>
 <body id="top">
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
   <header>
-    <div class="logo"><a href="#top" style="color: inherit; text-decoration: none;">STRGR</a> </div>
-      <nav>
+    <div class="logo"><a href="#top" aria-label="Inicio STRGR">STRGR</a></div>
+    <nav aria-label="Navegación principal">
       <a href="#servicios">Servicios</a>
       <a href="#quienes-somos">Quiénes Somos</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    
-    <button id="toggle-mode" style="margin-left: 1rem; background: none; border: 2px solid white; color: white; padding: 0.4rem 1rem; border-radius: 20px; cursor: pointer;">
-  🌙 
-    </button>
-     </header>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
+    <button id="toggle-mode" class="theme-toggle" aria-label="Cambiar tema">☀️ <span class="toggle-text" style="font-size:.85rem;">Claro</span></button>
+  </header>
 
-  <main>
-    <section id="hero">
-      <div id="hero-text">
-        <h1>Automatizaciones con IA para empresas inteligentes</h1>
-        <p>Impulsa tu negocio al futuro con soluciones personalizadas de inteligencia artificial que ahorran tiempo y aumentan ingresos.</p>
-        <a href="#contacto" class="cta-btn">Contáctanos</a>
+  <!-- Menú móvil -->
+  <div id="menu-movil" class="mobile-menu" aria-label="Menú móvil" hidden>
+    <a href="#servicios">Servicios</a>
+    <a href="#quienes-somos">Quiénes Somos</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="hero" aria-labelledby="tit-hero">
+      <div class="hero-text">
+        <h1 id="tit-hero">Automatizaciones con IA para empresas inteligentes</h1>
+        <p>Impulsa tu negocio al futuro con soluciones personalizadas de inteligencia artificial que ahorran tiempo, reducen costes y aumentan ingresos de manera sostenible.</p>
+        <a href="#contacto" class="cta-btn" aria-label="Ir a formulario de contacto">Contáctanos</a>
       </div>
-      <div id="hero-image">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Inteligencia Artificial" />
+      <div class="media-frame">
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=70" type="image/jpeg" />
+          <img class="hero-img" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=70" alt="Visual abstracto representando Inteligencia Artificial y redes de datos" width="600" height="450" loading="lazy" decoding="async" />
+        </picture>
       </div>
     </section>
 
-    <section id="servicios">
-      <h2>Servicios</h2>
-      <ul>
-        <li>Automatización de procesos administrativos y de ventas</li>
-        <li>Integración de chatbots inteligentes y soporte 24/7</li>
-        <li>Analítica avanzada para toma de decisiones</li>
-        <li>Desarrollo a medida de soluciones IA</li>
-        <li>Consultoría y capacitación en IA para equipos</li>
-      </ul>
+    <!-- Servicios -->
+    <section id="servicios" aria-labelledby="tit-servicios">
+      <h2 id="tit-servicios">Servicios</h2>
+      <p>Soluciones diseñadas para acelerar la adopción de Inteligencia Artificial en tu organización:</p>
+      <div class="services-grid" role="list">
+        <div class="service-item" role="listitem">
+          <div class="service-icon" aria-hidden="true">⚙️</div>
+          <h3>Automatización de Procesos</h3>
+          <p>Mapeo, optimización y robotización (RPA + IA) de tareas administrativas, ventas y back-office.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <div class="service-icon" aria-hidden="true">💬</div>
+          <h3>Chatbots Inteligentes</h3>
+          <p>Asistentes conversacionales 24/7 entrenados con tu documentación y tono de marca.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <div class="service-icon" aria-hidden="true">📊</div>
+          <h3>Analítica Avanzada</h3>
+          <p>Modelos para previsión de demanda, segmentación y decisiones basadas en datos.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <div class="service-icon" aria-hidden="true">🧠</div>
+          <h3>Soluciones IA a Medida</h3>
+          <p>Integraciones de modelos de lenguaje, visión y embeddings adaptados a tus flujos.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <div class="service-icon" aria-hidden="true">🎓</div>
+          <h3>Formación & Coaching</h3>
+          <p>Capacitación práctica para equipos en prompts, herramientas y gobierno de IA.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <div class="service-icon" aria-hidden="true">🔗</div>
+          <h3>Integración & API</h3>
+          <p>Conexión segura de tus sistemas (CRM, ERP, SaaS) con pipelines y agentes de IA.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="quienes-somos">
-      <h2>Quiénes Somos</h2>
-      <article>
-        <h3>Visión</h3>
-        <p>Ser líderes en innovación tecnológica que transforma negocios con IA.</p>
-      </article>
-      <article>
-        <h3>Misión</h3>
-        <p>Brindar soluciones inteligentes que optimicen recursos y generen valor.</p>
-      </article>
+    <!-- Quiénes Somos -->
+    <section id="quienes-somos" aria-labelledby="tit-quienes">
+      <h2 id="tit-quienes">Quiénes Somos</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Visión</h3>
+          <p>Ser referentes en innovación aplicada, democratizando el acceso a la Inteligencia Artificial con impacto medible.</p>
+        </div>
+        <div class="about-card">
+          <h3>Misión</h3>
+            <p>Entregar soluciones inteligentes que optimicen recursos, eleven la experiencia del cliente y generen nuevos modelos de valor.</p>
+        </div>
+        <div class="about-card">
+          <h3>Foco en Resultados</h3>
+          <p>Métricas claras: ahorro de horas, incremento de conversión, reducción de errores y aceleración del ciclo de ventas.</p>
+        </div>
+        <div class="about-card">
+          <h3>Metodología</h3>
+          <p>Diagnóstico rápido → prototipo ágil → validación → escalado seguro y gobernanza de datos.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <form
-  action="https://formspree.io/f/xblykvvn"
-  method="POST"
->
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre" name="name" required>
-
-  <label for="email">Correo Electrónico:</label>
-  <input type="email" id="email" name="_replyto" required>
-
-  <label for="mensaje">Mensaje:</label>
-  <textarea id="mensaje" name="message" required></textarea>
-
-  <input type="hidden" name="_next" value="https://strugurelu.github.io/miweb/gracias.html">
-
-  <button type="submit">Enviar</button>
-</form>
+    <!-- Contacto -->
+    <section id="contacto" aria-labelledby="tit-contacto">
+      <h2 id="tit-contacto">Contacto</h2>
+      <p>Cuéntanos brevemente tu reto y te responderemos en menos de 24h.</p>
+      <form id="contact-form" action="https://formspree.io/f/xblykvvn" method="POST" novalidate>
+        <div>
+          <label for="nombre">Nombre <span aria-hidden="true">*</span></label>
+          <input type="text" id="nombre" name="name" autocomplete="name" required placeholder="Tu nombre" />
+        </div>
+        <div>
+          <label for="email">Correo Electrónico <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required placeholder="tucorreo@empresa.com" />
+        </div>
+        <div>
+          <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
+          <textarea id="mensaje" name="message" required placeholder="Describe el objetivo o problema a resolver..."></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde STRGR" />
+        <input type="hidden" name="_next" value="https://strugurelu.github.io/miweb/gracias.html" />
+        <div class="form-actions">
+          <button type="submit" class="btn" aria-label="Enviar formulario">Enviar</button>
+          <span id="success-message" class="msg-exito" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+      <noscript><p style="margin-top:1rem;font-size:.9rem;">El envío asincrónico requiere JavaScript. Tu formulario se enviará por POST estándar.</p></noscript>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 STRGR Agencia de Automatizaciones con IA. Todos los derechos reservados.
+    &copy; <span id="anio"></span> STRGR Agencia de Automatizaciones con IA. Todos los derechos reservados.
   </footer>
 
+  <!-- Barra Social -->
+  <div class="social-bar" aria-label="Redes sociales">
+    <a class="whatsapp" href="https://wa.me/34642607380" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <img class="social-icon" src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="Icono WhatsApp" loading="lazy" />
+    </a>
+    <a class="instagram" href="https://www.instagram.com/davidstr_r/" target="_blank" rel="noopener" aria-label="Instagram">
+      <img class="social-icon" src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Icono Instagram" loading="lazy" />
+    </a>
+    <a class="tiktok" href="https://www.tiktok.com/@usernamex._o" target="_blank" rel="noopener" aria-label="TikTok">
+      <img class="social-icon" src="https://img.icons8.com/ios-filled/50/ffffff/tiktok.png" alt="Icono TikTok" loading="lazy" />
+    </a>
+  </div>
+
   <script>
-    const form = document.getElementById('contact-form');
-    const successMessage = document.getElementById('success-message');
+    /* ===== Utilidades ===== */
+    const qs = s => document.querySelector(s);
+    const qsa = s => [...document.querySelectorAll(s)];
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      // Aquí podrías agregar lógica real para enviar el formulario
-      successMessage.style.display = 'block';
-      form.reset();
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-      }, 5000);
+    /* ===== Año dinámico ===== */
+    qs('#anio').textContent = new Date().getFullYear();
+
+    /* ===== Tema Claro/Oscuro con preferencia persistente ===== */
+    const toggleBtn = qs('#toggle-mode');
+    const userPref = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (userPref === 'light' || (!userPref && !prefersDark)) {
+      document.body.classList.add('light-mode');
+      toggleBtn.firstChild && (toggleBtn.firstChild.textContent = '🌙');
+      toggleBtn.querySelector('.toggle-text').textContent = 'Oscuro';
+    } else {
+      toggleBtn.querySelector('.toggle-text').textContent = 'Claro';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      toggleBtn.innerHTML = isLight ? '🌙 <span class="toggle-text">Oscuro</span>' : '☀️ <span class="toggle-text">Claro</span>';
     });
-  </script>
 
-  <a href="https://wa.me/34642607380" 
-   target="_blank" 
-   style="position:fixed; bottom:20px; right:20px; z-index:1000; background-color:#25D366; padding:12px; border-radius:50%; box-shadow:0 0 10px rgba(0,0,0,0.3);">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" 
-       alt="WhatsApp" 
-       style="width:28px; height:28px;" />
-</a>
+    /* ===== Envío del formulario asincrónico (Formspree) ===== */
+    const form = qs('#contact-form');
+    const successMessage = qs('#success-message');
 
-<a href="https://www.instagram.com/davidstr_r/" 
-   target="_blank" 
-   style="position:fixed; bottom:90px; right:20px; z-index:1000; background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%,#285AEB 90%); padding:12px; border-radius:50%; box-shadow:0 0 10px rgba(0,0,0,0.5);">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" 
-       alt="Instagram" 
-       style="width:28px; height:28px;" />
-</a>
-  
-<a href="https://www.tiktok.com/@usernamex._o" 
-   target="_blank" 
-   style="position:fixed; bottom:160px; right:20px; z-index:1000; background-color:#000; padding:12px; border-radius:50%; box-shadow:0 0 10px rgba(0,0,0,0.5);">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/tiktok.png" 
-       alt="TikTok" 
-       style="width:28px; height:28px;" />
-</a>
-  
-<script>
-  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const targetID = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetID);
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+      successMessage.classList.remove('visible');
+      successMessage.textContent = 'Enviando...';
+      successMessage.classList.add('visible');
+
+      const data = new FormData(form);
+      try {
+        const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+        if (resp.ok) {
+          form.reset();
+          successMessage.textContent = '¡Mensaje enviado con éxito! Te responderemos pronto.';
+        } else {
+          successMessage.textContent = 'Hubo un problema. Inténtalo nuevamente.';
+        }
+      } catch (err) {
+        successMessage.textContent = 'Error de conexión. Revisa tu red.';
+      }
+      setTimeout(()=> successMessage.classList.remove('visible'), 6000);
+    });
+
+    /* ===== Resaltado de sección activa en navegación ===== */
+    const navLinks = qsa('header nav a');
+    const sections = navLinks.map(a => document.getElementById(a.getAttribute('href').substring(1))).filter(Boolean);
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href').substring(1) === entry.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(sec => obs.observe(sec));
+
+    /* ===== Menú móvil ===== */
+    const navToggle = qs('.nav-toggle');
+    const mobileMenu = qs('#menu-movil');
+    navToggle.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+      mobileMenu.hidden = !open;
+      navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    });
+    mobileMenu.addEventListener('click', e => {
+      if (e.target.matches('a')) {
+        mobileMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.hidden = true;
+        navToggle.setAttribute('aria-label', 'Abrir menú');
       }
     });
-  });
-</script>
-<script>
-  const toggleBtn = document.getElementById('toggle-mode');
-  const body = document.body;
-
-  // Aplica el modo guardado en localStorage
-  const storedTheme = localStorage.getItem('theme');
-  if (storedTheme === 'light') {
-    body.classList.add('light-mode');
-    toggleBtn.textContent = '🌙 Oscuro';
-  } else {
-    toggleBtn.textContent = '☀️ Claro';
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    const isLight = body.classList.toggle('light-mode');
-    toggleBtn.textContent = isLight ? '🌙 Oscuro' : '☀️ Claro';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-</script>  
+  </script>
 </body>
 </html>
-
